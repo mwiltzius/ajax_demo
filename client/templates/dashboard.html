@@ -41,6 +41,13 @@
       <input type="submit" value="Add Experience">
     </form>
     <h2>Current resume items</h2>
+    <form action="/organize" method="get" id="filter">
+      <select name="content_type" id="content_filter">
+        <option value="JOB">Job</option>
+        <option value="EDUCATION">Education</option>
+        <option value="PROJECT">Project</option>
+      </select>
+    </form>
     <div id="resume-items"></div>
   </div>
 </body>

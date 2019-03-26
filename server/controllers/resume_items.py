@@ -14,5 +14,8 @@ def create():
     return "SUCCESS"
 
 def current_user(user_id):
-    resume_items = ResumeItem.query.filter_by(user_id=user_id).all()
+    resume_filter = request.args.get('content_type')
+    print(resume_filter)
+    resume_items = ResumeItem.query.filter_by(user_id=user_id, content_type=resume_filter).all()
+    print(resume_items)
     return render_template('partials/resume_items.html', items=resume_items)

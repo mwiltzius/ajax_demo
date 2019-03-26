@@ -6,7 +6,8 @@ $(document).ready(function() {
   $.get('/resume_items/' + CURRENT_USER_ID, function(items) {
     $('#resume-items').html(items);
   })
-  
+
+  //adds things to database
   $("#item-create-form").submit(function(e) {
     e.preventDefault()
     $.ajax({
@@ -21,6 +22,19 @@ $(document).ready(function() {
       },
       error: function(data) {
         $("#errors").html(data.responseText)
+      }
+    })
+  })
+
+  //displays things
+  $('#content_filter').change(function(){
+    $.ajax({
+      url:'/resume_items/' + CURRENT_USER_ID,
+      method: 'GET',
+      data: $('#filter').serialize(),
+      success: function(items){
+        console.log(items)
+          $('#resume-items').html(items);
       }
     })
   })
